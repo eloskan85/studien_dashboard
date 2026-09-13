@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 
 from domain import Belegung, Pruefungsart
+from domain.model import ERLAUBTE_NOTEN
 
 
 class EditDialog(tk.Toplevel):
@@ -59,9 +60,10 @@ class EditDialog(tk.Toplevel):
 
         self.lbl_note = ttk.Label(self, text="Note")
         self.lbl_note.grid(row=row, column=0, sticky="w", padx=10, pady=6)
-        self.note = ttk.Entry(self, width=30)
+        noten = [f"{n:.1f}".replace(".", ",") for n in ERLAUBTE_NOTEN]
+        self.note = ttk.Combobox(self, values=noten, state="readonly", width=28)
         if belegung and belegung.pruefungsleistung:
-            self.note.insert(0, str(belegung.pruefungsleistung.note).replace(".", ","))
+            self.note.set(f"{belegung.pruefungsleistung.note:.1f}".replace(".", ","))
         self.note.grid(row=row, column=1, padx=10, pady=6)
         row += 1
 
@@ -96,7 +98,7 @@ class EditDialog(tk.Toplevel):
             self.lbl_note.grid()
             self.note.grid()
         else:
-            self.note.delete(0, "end")
+            self.note.set("")
             self.lbl_note.grid_remove()
             self.note.grid_remove()
 

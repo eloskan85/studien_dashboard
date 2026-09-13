@@ -45,6 +45,12 @@ class AmpelStatus(Enum):
     GELB = "GELB"
     ROT = "ROT"
 
+"""Erlaubte Hochschulnoten. 1,0; 1,3; 1,7; 2,0; 2,3; 2,7; 3,0; 3,3; 3,7; 4,0 ist bestanden,
+   bei 5,0 ist nicht bestanden"""
+ERLAUBTE_NOTEN = tuple(
+    round(i + j, 1) for i in range(1, 4) for j in (0.0, 0.3, 0.7)
+) + (4.0, 5.0)
+
 # -----------------------------
 # Domäne
 # -----------------------------
@@ -122,9 +128,11 @@ class Belegung:
 
     def setze_note(self, note: float, art: Pruefungsart, datum: date) -> None:
         """Legt die Pruefungsleistung an und leitet den Status aus der Note ab."""
+        note = round(note, 1)
+        if note not in ERLAUBTE_NOTEN:
+            raise ValueError("Note nicht erlaubt. Gültig: 1,0 bis 4,0 in 0,3/0,7-Schritten sowie 5,0.")
         self.pruefungsleistung = Pruefungsleistung(art, note, datum)
         self.status = ModulStatus.BESTANDEN if self.ist_bestanden else ModulStatus.NICHT_BESTANDEN
-
 
 class Student:
     """Studierende Person. Alle Kennzahlen und die Ampel liegen hier."""
