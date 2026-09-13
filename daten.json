@@ -1,0 +1,136 @@
+{
+  "matrikelnummer": "9225210",
+  "vorname": "Eugen",
+  "nachname": "Loskan",
+  "studienbeginn": "2022-11-28",
+  "studiengang": {
+    "name": "Softwareentwicklung",
+    "gesamtects": 180,
+    "max_semester": 8,
+    "semester": [
+      {
+        "nummer": 1,
+        "bezeichnung": "Semester 1",
+        "status": "ABGESCHLOSSEN"
+      },
+      {
+        "nummer": 2,
+        "bezeichnung": "Semester 2",
+        "status": "AKTUELL"
+      },
+      {
+        "nummer": 3,
+        "bezeichnung": "Semester 3",
+        "status": "GEPLANT"
+      },
+      {
+        "nummer": 4,
+        "bezeichnung": "Semester 4",
+        "status": "GEPLANT"
+      },
+      {
+        "nummer": 5,
+        "bezeichnung": "Semester 5",
+        "status": "GEPLANT"
+      },
+      {
+        "nummer": 6,
+        "bezeichnung": "Semester 6",
+        "status": "GEPLANT"
+      },
+      {
+        "nummer": 7,
+        "bezeichnung": "Semester 7",
+        "status": "GEPLANT"
+      },
+      {
+        "nummer": 8,
+        "bezeichnung": "Semester 8",
+        "status": "GEPLANT"
+      }
+    ],
+    "module": [
+      {
+        "modul_id": "M1",
+        "name": "Data Science",
+        "ects": 5
+      },
+      {
+        "modul_id": "M2",
+        "name": "Mathematik I",
+        "ects": 5
+      },
+      {
+        "modul_id": "DLBDSOOFPP01",
+        "name": "OOP mit Python",
+        "ects": 5
+      },
+      {
+        "modul_id": "M4",
+        "name": "Datenbanken",
+        "ects": 5
+      },
+      {
+        "modul_id": "M5",
+        "name": "Mathematik II",
+        "ects": 5
+      }
+    ]
+  },
+  "belegungen": [
+    {
+      "modul_id": "M1",
+      "status": "BESTANDEN",
+      "semester_nummer": 1,
+      "pruefungsleistung": {
+        "art": "KLAUSUR",
+        "note": 1.3,
+        "datum": "2025-02-10",
+        "seitenumfang": null,
+        "dauer_minuten": 90
+      }
+    },
+    {
+      "modul_id": "M2",
+      "status": "BESTANDEN",
+      "semester_nummer": 1,
+      "pruefungsleistung": {
+        "art": "KLAUSUR",
+        "note": 2.0,
+        "datum": "2025-02-20",
+        "seitenumfang": null,
+        "dauer_minuten": 90
+      }
+    },
+    {
+      "modul_id": "DLBDSOOFPP01",
+      "status": "BESTANDEN",
+      "semester_nummer": 2,
+      "pruefungsleistung": {
+        "art": "KLAUSUR",
+        "note": 2.0,
+        "datum": "2026-09-12",
+        "seitenumfang": null,
+        "dauer_minuten": null
+      }
+    },
+    {
+      "modul_id": "M4",
+      "status": "GEPLANT",
+      "semester_nummer": 3,
+      "pruefungsleistung": null
+    },
+    {
+      "modul_id": "M5",
+      "status": "BESTANDEN",
+      "semester_nummer": 3,
+      "pruefungsleistung": {
+        "art": "KLAUSUR",
+        "note": 2.0,
+        "datum": "2026-09-13",
+        "seitenumfang": null,
+        "dauer_minuten": null
+      }
+    }
+  ]
+}
