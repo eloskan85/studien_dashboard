@@ -45,7 +45,11 @@ class DashboardApp:
 
         balken_box = ttk.Frame(self.root)
         balken_box.pack(fill="x", padx=16, pady=8)
-        ttk.Label(balken_box, text="ECTS gesamt").pack(anchor="w")
+        balken_kopf = ttk.Frame(balken_box)
+        balken_kopf.pack(fill="x")
+        ttk.Label(balken_kopf, text="Gesamtfortschritt Studium").pack(side="left")
+        self.lbl_balken = ttk.Label(balken_kopf, text="")
+        self.lbl_balken.pack(side="right")
         self.balken = ttk.Progressbar(balken_box, maximum=100, length=400)
         self.balken.pack(fill="x", pady=4)
 
@@ -67,13 +71,24 @@ class DashboardApp:
             text=f"Studienbeginn: {s.studienbeginn.isoformat()}   |   max. {s.studiengang.max_semester} Semester"
         )
         ects = self.service.ects_fortschritt()
+        note = self.service.notendurchschnitt()
+        zeit = self.service.zeitfortschritt()
+        erreicht = sum(b.modul.ects for b in s.belegungen if b.ist_bestanden)
+        gesamt = s.studiengang.gesamtects
+        max_sem = s.studiengang.max_semester
+        fachsemester = max(1, min(max_sem, round(zeit / 100 * max_sem) or 1))
         self.kpi.aktualisieren(
             ects,
-            self.service.notendurchschnitt(),
-            self.service.zeitfortschritt(),
+            note,
+            zeit,
             self.service.ampel().name,
+            erreicht,
+            gesamt,
+            fachsemester,
+            max_sem,
         )
         self.balken["value"] = ects
+        self.lbl_balken.config(text=f"{erreicht} von {gesamt} ECTS  ·  {ects:.0f} %")
 
         zeilen = []
         for b in s.belegungen:
