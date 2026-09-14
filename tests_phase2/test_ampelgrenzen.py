@@ -33,9 +33,9 @@ def test_ampelgrenzen() -> None:
     schnitt = student.berechne_notendurchschnitt()
     assert round(schnitt, 2) == 1.65
     assert student.ermittle_ziel_ampel() is AmpelStatus.GRUEN
-    assert _student_mit_noten([1.8]).ermittle_ziel_ampel() is AmpelStatus.GELB
+    assert _student_mit_noten([1.7]).ermittle_ziel_ampel() is AmpelStatus.GELB
     assert _student_mit_noten([2.0]).ermittle_ziel_ampel() is AmpelStatus.ROT
-    print("OK: 1,65 GRUEN, 1,8 GELB, 2,0 ROT")
+    print("OK: 1,65 GRUEN, 1,7 GELB, 2,0 ROT")
 
 
 if __name__ == "__main__":
