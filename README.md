@@ -1,8 +1,6 @@
 # Studien-Dashboard
 
-Eugen Loskan, Matrikelnummer: 9225210
-
-Persönliches Dashboard zum Studienfortschritt (DLBDSOOFPP01_D - Objektorientierte und funktionale Programmierung mit Python).
+Persönliches Dashboard zum Studienfortschritt.
 
 Python 3.12, nur Standardbibliothek (tkinter, json). Kein pip.
 
